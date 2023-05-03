@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/bagnalli/pokedex/issues"
   },
-  "homepage": "https://github.com/bagnalli/pokedex#readme"
+  "homepage": "https://github.com/bagnalli/pokedex#readme",
+  "dependencies": {
+    "sequelize": "^6.31.1",
+    "sqlite3": "^5.1.6"
+  }
 }

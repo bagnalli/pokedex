@@ -75,4 +75,4 @@ const pokemon = [
   },
 ];
 
-module.exports = pokemon;
+module.exports = { pokemon };
