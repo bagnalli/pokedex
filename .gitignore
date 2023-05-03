@@ -1,3 +1,5 @@
+# Built in node
+
 # Logs
 logs
 *.log
@@ -93,6 +95,10 @@ dist
 
 # Gatsby files
 .cache/
+
+
+# FROM CODING ROOMS
+
 # Comment in the public line in if your project uses Gatsby and not Next.js
 # https://nextjs.org/blog/next-9-1#public-directory-support
 # public
@@ -128,3 +134,35 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# testing
+coverage/
+
+# production
+dist/
+build/
+
+# misc
+.DS_Store
+.parcel-cache
+haters
+.env
+.vscode
+.cache
+
+# package managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npmrc
+
+# sqlite
+*.sqlite
