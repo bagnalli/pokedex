@@ -66,6 +66,8 @@ app.post("/", async (req, res, next) => {
   }
 });
 
+// DELETE REQUEST
+
 app.delete("/:id", async (req, res) => {
   try {
     // Get pokemon
@@ -81,6 +83,24 @@ app.delete("/:id", async (req, res) => {
     res.sendStatus(204);
   } catch (error) {
     res.send(error);
+  }
+});
+
+// UPDATE REQUEST
+
+app.put("/:id", async (req, res, next) => {
+  try {
+    const pokemon = await Pokemon.findByPk(req.params.id);
+    if (!pokemon) {
+      res.sendStatus(404);
+    } else {
+      const pokemon = await Pokemon.findByPk(req.params.id);
+      pokemon.update(req.body);
+      res.json(`${pokemon["name"]} was updated!`);
+    }
+  } catch (error) {
+    console.log(error);
+    next(error);
   }
 });
 
