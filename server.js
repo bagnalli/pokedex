@@ -1,4 +1,4 @@
-const app = require("./index");
+const app = require("./app");
 const { sequelize } = require("./db");
 
 // const { PORT = 4000 } = process.env;
