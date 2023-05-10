@@ -66,4 +66,22 @@ app.post("/", async (req, res, next) => {
   }
 });
 
+app.delete("/:id", async (req, res) => {
+  try {
+    // Get pokemon
+    const pokemonId = req.params.id;
+    const pokemon = await Pokemon.findByPk(pokemonId);
+
+    if (!pokemon) {
+      res.sendStatus(404);
+      return;
+    }
+
+    await Pokemon.destroy({ where: { id: pokemonId } });
+    res.sendStatus(204);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
 module.exports = app;
