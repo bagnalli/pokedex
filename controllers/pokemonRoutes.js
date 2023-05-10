@@ -24,10 +24,10 @@ app.get("/", async (req, res, next) => {
 
 // GET specific pokemon by id
 
-app.get("/:id", async (req, res, next) => {
+app.get("/:name", async (req, res, next) => {
   try {
-    const pokemonID = req.params.id;
-    const pokemon = await Pokemon.findByPk(pokemonID);
+    const pokemonName = req.params.name;
+    const pokemon = await Pokemon.findOne({ where: { name: pokemonName } });
 
     if (!pokemon) {
       res.sendStatus(404);
@@ -68,18 +68,18 @@ app.post("/", async (req, res, next) => {
 
 // DELETE REQUEST
 
-app.delete("/:id", async (req, res) => {
+app.delete("/:name", async (req, res) => {
   try {
     // Get pokemon
-    const pokemonId = req.params.id;
-    const pokemon = await Pokemon.findByPk(pokemonId);
+    const pokemonName = req.params.name;
+    const pokemon = await Pokemon.findOne({ where: { name: pokemonName } });
 
     if (!pokemon) {
       res.sendStatus(404);
       return;
     }
 
-    await Pokemon.destroy({ where: { id: pokemonId } });
+    await Pokemon.destroy({ where: { name: pokemonName } });
     res.sendStatus(204);
   } catch (error) {
     res.send(error);
@@ -88,13 +88,13 @@ app.delete("/:id", async (req, res) => {
 
 // UPDATE REQUEST
 
-app.put("/:id", async (req, res, next) => {
+app.put("/:name", async (req, res, next) => {
   try {
-    const pokemon = await Pokemon.findByPk(req.params.id);
+    const pokemonName = req.params.name;
+    const pokemon = await Pokemon.findOne({ where: { name: pokemonName } });
     if (!pokemon) {
       res.sendStatus(404);
     } else {
-      const pokemon = await Pokemon.findByPk(req.params.id);
       pokemon.update(req.body);
       res.json(`${pokemon["name"]} was updated!`);
     }
