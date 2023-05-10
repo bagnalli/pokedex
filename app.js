@@ -1,12 +1,13 @@
 const express = require("express");
 const app = express();
+const middleware = require("./controllers/middleware");
 
-// Import route files
-// const pokemonRoutes = require('./routes/pokemon');
-// const userRoutes = require('./routes/user');
+const indexRoutes = require("./controllers/index");
+// const pokemonRoutes = require('');
+// const userRoutes = require('');
 
-// Mount routes on the app
-// app.use('/pokemon', pokemonRoutes);
-// app.use('/user', userRoutes);
+app.use(middleware);
+
+app.use("/", indexRoutes);
 
 module.exports = app;
