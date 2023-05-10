@@ -75,4 +75,14 @@ const pokemon = [
   },
 ];
 
-module.exports = { pokemon };
+const user = [
+  {
+    username: "proff_oak",
+    title: "Professor",
+    firstName: "Samuel",
+    lastName: "Oak",
+    password: null,
+  },
+];
+
+module.exports = { pokemon, user };
