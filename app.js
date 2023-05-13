@@ -4,12 +4,14 @@ const middleware = require("./controllers/middleware");
 
 const indexRoutes = require("./controllers/index");
 const pokemonRoutes = require("./controllers/pokemonRoutes");
-// const userRoutes = require('');
+const userRoutes = require("./controllers/userRoutes");
 
 app.use(middleware);
 
 app.use("/", indexRoutes);
 app.use("/pokemon", pokemonRoutes);
+app.use("/", userRoutes);
+app.use("/", userRoutes);
 
 // MIDDLEWARE
 
