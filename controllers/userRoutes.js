@@ -5,26 +5,11 @@ const { User } = require("../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
+const authenticateUser = require("./authMiddleware");
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
 app.use(middleware);
-
-// Verifies token with jwt.verify and sets req.user
-// Authentication middleware
-
-app.use(async (req, res, next) => {
-  const auth = req.header("Authorization");
-  if (!auth) {
-    next();
-  } else {
-    const [, token] = auth.split(" ");
-    const userObj = jwt.verify(token, JWT_SECRET);
-    const user = await User.findByPk(userObj.id);
-    req.user = user;
-    next();
-  }
-});
 
 // LOGIN
 
@@ -44,6 +29,7 @@ app.post("/login", async (req, res, next) => {
         { id: user.id, username: user.username },
         JWT_SECRET
       );
+      res.setHeader("Authorization", `Bearer ${token}`); // Set Authorization header
       res.send({ message: "success", token });
     } else {
       res.sendStatus(401);
@@ -67,6 +53,13 @@ app.post("/register", async (req, res, next) => {
   });
   const token = jwt.sign({ id, username }, JWT_SECRET);
   res.status(200).send({ message: "success", token });
+});
+
+// error handling middleware, so failed tests receive them
+app.use((error, req, res, next) => {
+  console.error("SERVER ERROR: ", error);
+  if (res.statusCode < 400) res.status(500);
+  res.send({ error: error.message, name: error.name, message: error.message });
 });
 
 module.exports = app;
