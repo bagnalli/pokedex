@@ -20,7 +20,7 @@ app.post("/login", async (req, res, next) => {
       where: { username },
     });
     if (!user) {
-      res.sendStatus(401);
+      res.status(401).send("You need to be a user to view this.");
       return;
     }
     const isAMatch = await bcrypt.compare(password, user.password);

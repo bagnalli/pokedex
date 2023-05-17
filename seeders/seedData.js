@@ -75,14 +75,14 @@ const pokemon = [
   },
 ];
 
-const user = [
-  {
-    username: "proff_oak",
-    title: "Professor",
-    firstName: "Samuel",
-    lastName: "Oak",
-    password: null,
-  },
-];
+// const user = [
+//   {
+//     username: "prof_oak",
+//     title: "Professor",
+//     firstName: "Samuel",
+//     lastName: "Oak",
+//     password: "CatchEmAll",
+//   },
+// ];
 
 module.exports = { pokemon, user };

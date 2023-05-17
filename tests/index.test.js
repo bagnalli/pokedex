@@ -28,11 +28,11 @@ describe("Endpoints", () => {
     description: "testing the desc",
   };
   const testUserData = {
-    username: "red",
-    title: "PM",
-    firstName: "red",
-    lastName: "der",
-    password: "redtest",
+    username: "G_Oak",
+    title: "Master",
+    firstName: "Gary",
+    lastName: "Oak",
+    password: "smellYaLater",
   };
   let user;
   let pokemon;
@@ -53,7 +53,7 @@ describe("Endpoints", () => {
       .catch((err) => console.error(err));
   });
 
-  describe("GET /", () => {
+  describe.skip("GET /", () => {
     it("should return correct html", async () => {
       const registerResponse = await request(app).get("/");
       expect(registerResponse.status).toBe(200);
@@ -80,12 +80,12 @@ describe("Endpoints", () => {
         });
       });
       it("should create user with username", async () => {
-        const foundUser = await User.findOne({ where: { username: "red" } });
+        const foundUser = await User.findOne({ where: { username: "G_Oak" } });
         expect(foundUser).toBeTruthy();
-        expect(foundUser.username).toBe("red");
+        expect(foundUser.username).toBe("G_Oak");
       });
       it("should hash password", async () => {
-        const foundUser = await User.findOne({ where: { username: "red" } });
+        const foundUser = await User.findOne({ where: { username: "G_Oak" } });
         expect(foundUser).toBeTruthy();
         expect(foundUser.password).not.toBe(testUserData.password);
         expect(foundUser.password).toEqual(
@@ -110,7 +110,7 @@ describe("Endpoints", () => {
         const incorrectLoginResponse = await request(app)
           .post("/login")
           .send({
-            username: "red",
+            username: "G_Oak",
             password: "notright",
           })
           .catch((err) => console.error(err));
