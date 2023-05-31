@@ -82,6 +82,7 @@ const user = [
     firstName: "Samuel",
     lastName: "Oak",
     password: null,
+    role: "admin",
   },
 ];
 
