@@ -1,4 +1,4 @@
-const { Pokemon } = require("./pokemon");
+const { Pokemon } = require("./Pokemon");
 const { User } = require("./User");
 const { sequelize, Sequelize } = require("./db");
 
