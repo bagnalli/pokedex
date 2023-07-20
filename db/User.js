@@ -6,11 +6,11 @@ const User = sequelize.define("user", {
   firstName: Sequelize.STRING,
   lastName: Sequelize.STRING,
   password: Sequelize.STRING,
-  role: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    defaultValue: "user",
-  },
+  // role: {
+  //   type: Sequelize.STRING,
+  //   allowNull: false,
+  //   defaultValue: "user",
+  // },
 });
 
 module.exports = { User };

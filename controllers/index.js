@@ -18,7 +18,7 @@ app.get("/", async (req, res, next) => {
   }
 });
 
-// error handling middleware, so failed tests receive them
+// error handling middleware
 app.use((error, req, res, next) => {
   console.error("SERVER ERROR: ", error);
   if (res.statusCode < 400) res.status(500);
